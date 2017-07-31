@@ -54,4 +54,10 @@ public class User {
 	public String toString() {
 		return "User [userId=" + userId + ", password=" + password + ", name=" + name + ", email=" + email + "]";
 	}
+
+	public void update(User nUser) {
+		this.password = nUser.password;
+		this.name = nUser.name;
+		this.email = nUser.email;
+	}
 }
