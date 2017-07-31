@@ -11,21 +11,26 @@ import com.example.demo.domain.User;
 import com.example.demo.domain.UserRepository;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/users")
 public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@PostMapping("/create")
+	@GetMapping("/form")
+	public String form() {
+		return "/user/form";
+	}
+	
+	@PostMapping("")
 	public String create(User user) {
 		System.out.println("user : " + user);
 		userRepository.save(user);
-		return "redirect:/user/list";
+		return "redirect:/users";
 	}
 	
-	@GetMapping("/list")
+	@GetMapping("")
 	public String list(Model model) {
 		model.addAttribute("users", userRepository.findAll());
-		return "list";
+		return "/user/list";
 	}
 }
